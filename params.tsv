@@ -1,0 +1,11 @@
+minAngleLeftLanes=30
+minAngleRightLanes=-70
+maxAngleLeftLanes=70
+maxAngleRightLanes=-30
+kernel_size=5
+low_threshold=20
+high_threshold=100
+rho=1
+threshold=50
+min_line_length=60
+max_line_gap=400

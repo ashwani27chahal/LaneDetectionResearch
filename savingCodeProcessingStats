@@ -1,0 +1,3 @@
+import cProfile
+import LaneDetectionAlgorithmTest
+cProfile.run('LaneDetectionAlgorithmTest.processing("/home/ashwani/Desktop/testing/","/home/ashwani/Desktop/testingoutput/",False)', 'CodeProcessingStats')

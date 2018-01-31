@@ -1,0 +1,33 @@
+WEATHER CONDITIONS  |   TOTAL IMAGES    |   BOTH LANES DETECTED |   ONE LANE DETECTED/NO LANE/False POSITIVE        |     PERCENTAGE ACCURACY
+------------------------------------------------------------------------------------------------------------------------------------------------
+RAINY WEATHER       |       3800        |         3711          |                    89                             |       97.65%
+
+SUNNY WEATHER       |       6139        |         5996          |                   143                             |       96.67%
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+COMBINED            |       9939        |          9707         |                   232                             |       97.66%
+
+
+
+---------------AFTER OPTIMIZATION-------------------------------
+SUNNY DATA
+Total time for 6139 images is 675.008284 seconds
+
+Frame rate: 9.09470319923 images per second
+
+-------------------------
+
+Rainy DATA:
+
+Total time for 3800 images is 538.35804 seconds
+
+Frame rate: 7.05849958143 images per second
+
+
+
+
+UNEXPECTED SUNNY DATA FALSE POSITIVES:
+--------------------------------------
+11956
+33801

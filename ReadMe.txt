@@ -30,7 +30,7 @@ maxAngleRightLanes=-30
 
 
 
-1. Rainy Data
+2. Rainy Data
 ---------------
 
 Contains 3800 images.
@@ -41,6 +41,26 @@ minAngleRightLanes=-65
 maxAngleLeftLanes=65
 maxAngleRightLanes=-28
 
+
+3. Snow Data
+--------------
+Contains 16486
+
+
+
+Parameters used-
+
+minAngleLeftLanes=30
+minAngleRightLanes=-70
+maxAngleLeftLanes=70
+maxAngleRightLanes=-30
+kernel_size=5
+low_threshold=20
+high_threshold=100
+rho=1
+threshold=50
+min_line_length=60
+max_line_gap=400
 
 
 Algorithm Explained

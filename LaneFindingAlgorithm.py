@@ -246,7 +246,7 @@ class LaneFindingAlgorithm:
     def findLanes(input_image, rowROI, leftHistory, rightHistory, flag):
         """Performs operations on the input image using the rowROI coming in from pre processing
         :rtype: object  """
-        with open('/home/ashwani/PycharmProjects/OpenCV/LaneDetectionResearchWork/params.tsv', 'rb') as f:
+        with open('/home/ashwani/PycharmProjects/OpenCV/LaneDetectionResearch/params.tsv', 'rb') as f:
             reader = csv.reader(f, delimiter='=', quoting=csv.QUOTE_NONE)
             configuration = {}
             for row in reader:
@@ -275,6 +275,9 @@ class LaneFindingAlgorithm:
 
 
         test_image = np.copy(input_image)
+        if flag:
+            plt.imshow(test_image)
+            plt.show()
         vertices = np.array([[(left_bottom[0], left_bottom[1]), (left_top[0], left_top[1]),
                               (right_top[0], right_top[1]), (right_bottom[0], right_bottom[1])]], dtype=np.int32)
         masked_image = LaneFindingAlgorithm.region_of_interest(test_image, vertices)
@@ -289,7 +292,15 @@ class LaneFindingAlgorithm:
 
 
         gray_image = LaneFindingAlgorithm.grayscale(masked_image)
+        # if flag:
+        #     cv2.imshow('gray', gray_image)
+        #     cv2.waitKey(0)
+        #     cv2.destroyAllWindows()
         blur_gray = LaneFindingAlgorithm.gaussian_blur(gray_image, kernel_size)
+        # if flag:
+        #     cv2.imshow('blur', blur_gray)
+        #     cv2.waitKey(0)
+        #     cv2.destroyAllWindows()
         edges = LaneFindingAlgorithm.abs_sobel_thresh(blur_gray, low_threshold, high_threshold)
 
         if flag:
@@ -308,6 +319,10 @@ class LaneFindingAlgorithm:
 
         # Add line image to the input image
         # Explained in readme
+        if flag:
+            # plt.plot(x, y, '--', lw=2)
+            plt.imshow(line_image, cmap='gray')
+            plt.show()
         output_image = cv2.addWeighted(input_image, 0.8, line_image, 1, 0)
 
         if flag:

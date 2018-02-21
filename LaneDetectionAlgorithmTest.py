@@ -38,10 +38,10 @@ def processing(inputpath, outputpath, debug):
         # # if debug:
         # #     cv2.imshow('roi', roi)
         # #     cv2.waitKey(0)
-        # #     cv2.destroyAllWindows()
-        #
+        # #     cv2.destroy
         # hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-        # hsvt = cv2.cvtColor(target, cv2.COLOR_BGR2HSV)
+        # hsvt = cv2AllWindows()
+        #.cvtColor(target, cv2.COLOR_BGR2HSV)
         #
         # # calculating object histogram
         # roihist = cv2.calcHist([hsv], [0, 1], None, [256, 256], [0, 256, 0, 256])
@@ -106,7 +106,7 @@ def processing(inputpath, outputpath, debug):
 
 # Execution starts here
 if __name__ == '__main__':
-    input_directory = "/home/ashwani/Desktop/dryrun3/"
-    output_directory = "/home/ashwani/Desktop/outputdryrun3/"
-    debug = False
+    input_directory = "/home/ashwani/Desktop/testing/"
+    output_directory = "/home/ashwani/Desktop/testingoutput/"
+    debug = True
     processing(input_directory, output_directory, debug)

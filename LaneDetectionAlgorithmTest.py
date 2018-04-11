@@ -21,10 +21,12 @@ def processing(inputpath, outputpath, debug):
         print "processing: ", filename
         # read using matplolib to send as a parameter to the lane finding algorithm
         input_image = mpimg.imread(inputpath + filename)
+
+
     #number of rows divided by number of columns (1080/1920)
-        dim = (800, 450)
-        resized = cv2.resize(input_image, dim, interpolation=cv2.INTER_AREA)
-        print resized.shape
+        # dim = (400, 255)
+        # resized = cv2.resize(input_image, dim, interpolation=cv2.INTER_AREA)
+        # print resized.shape
 
 
 
@@ -89,8 +91,8 @@ def processing(inputpath, outputpath, debug):
         # ******************************BACK PROJECTION ENDS HERE**************************************
 
 
-        rowROI = resized.shape[0]/2
-        output, leftHistory, rightHistory = LaneFindingAlgorithm.findLanes(resized, rowROI, leftHistory,
+        rowROI = input_image.shape[0]/2
+        output, leftHistory, rightHistory = LaneFindingAlgorithm.findLanes(input_image, rowROI, leftHistory,
                                                                            rightHistory, debug)
         mpimg.imsave(outputpath + filename, output, format='jpg')
         print "*****************************************************"
@@ -106,7 +108,7 @@ def processing(inputpath, outputpath, debug):
 
 # Execution starts here
 if __name__ == '__main__':
-    input_directory = "/home/ashwani/Desktop/testing/"
-    output_directory = "/home/ashwani/Desktop/testingoutput/"
-    debug = True
+    input_directory = "/home/ashwani/Desktop/ResizedRainyInput/"
+    output_directory = "/home/ashwani/Desktop/ResizedRainyOutput/"
+    debug = False
     processing(input_directory, output_directory, debug)

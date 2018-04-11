@@ -25,7 +25,7 @@ class LaneFindingAlgorithm:
 
 
     @staticmethod
-    def abs_sobel_thresh(img, thresh_min, thresh_max):
+    def gradience_change(img, thresh_min, thresh_max):
         """Computes edges in x-direction gradient change"""
         abs_sobel = np.absolute(cv2.Sobel(img, cv2.CV_64F, 1, 0))
 
@@ -90,14 +90,14 @@ class LaneFindingAlgorithm:
                     print "left lane lines in history"
                     print lane
                 for x1, y1, x2, y2 in lane:
-                    cv2.line(img, (x1, y1), (x2, y2), [255, 255, 0], 3)
+                    cv2.line(img, (x1, y1), (x2, y2), [255, 255, 0], 2)
 
             for lane in rightHistory:
                 if flag:
                     print "right lane lines in history"
                     print lane
                 for x1, y1, x2, y2 in lane:
-                    cv2.line(img, (x1, y1), (x2, y2), [255, 255, 0], 3)
+                    cv2.line(img, (x1, y1), (x2, y2), [255, 255, 0], 2)
 
             return leftHistory, rightHistory
         if flag:
@@ -154,7 +154,7 @@ class LaneFindingAlgorithm:
                     cLeft = (img.shape[0] - y2) - (m * x2 * 1.0)
                     if flag:
                         print "intercept of this left line is: ", cLeft
-                    if (meanLeft + 40.0) >= cLeft >= (meanLeft - 40.0):
+                    if (meanLeft + 20.0) >= cLeft >= (meanLeft - 20.0):
                         outputLeftLanes.append(leftLine)
 
             if flag:
@@ -167,7 +167,7 @@ class LaneFindingAlgorithm:
             leftHistory = np.copy(outputLeftLanes)
             for lane in outputLeftLanes:
                 for x1, y1, x2, y2 in lane:
-                    cv2.line(img, (x1, y1), (x2, y2), [0, 255, 0], 3)
+                    cv2.line(img, (x1, y1), (x2, y2), [0, 255, 0], 2)
 
         if not leftFlag:
 
@@ -177,7 +177,7 @@ class LaneFindingAlgorithm:
             for lane in leftHistory:
 
                 for x1, y1, x2, y2 in lane:
-                    cv2.line(img, (x1, y1), (x2, y2), [255, 255, 0], 3)
+                    cv2.line(img, (x1, y1), (x2, y2), [255, 255, 0], 2)
 
         if flag:
             print "Right lane lines: ", rightLaneLines
@@ -202,7 +202,7 @@ class LaneFindingAlgorithm:
                     cRight = (img.shape[0] - y2) - (m * x2 * 1.0)
                     if flag:
                         print "intercept of this right line is: ", cRight
-                    if (meanRight + 40.0) >= cRight >= (meanRight - 40.0):
+                    if (meanRight + 20.0) >= cRight >= (meanRight - 20.0):
                         outputRightLanes.append(rightLine)
 
             if flag:
@@ -214,7 +214,7 @@ class LaneFindingAlgorithm:
             rightHistory = np.copy(outputRightLanes)
             for lane in outputRightLanes:
                 for x1, y1, x2, y2 in lane:
-                    cv2.line(img, (x1, y1), (x2, y2), [255, 0, 0], 3)
+                    cv2.line(img, (x1, y1), (x2, y2), [255, 0, 0], 2)
 
         if not rightFlag:
 
@@ -222,7 +222,7 @@ class LaneFindingAlgorithm:
                 print "using history here"
             for lane in rightHistory:
                 for x1, y1, x2, y2 in lane:
-                    cv2.line(img, (x1, y1), (x2, y2), [255, 255, 0], 3)
+                    cv2.line(img, (x1, y1), (x2, y2), [255, 255, 0], 2)
 
         return leftHistory, rightHistory
 
@@ -236,6 +236,13 @@ class LaneFindingAlgorithm:
         lines = cv2.HoughLinesP(img, rho, theta, threshold, np.array([]), minLineLength=min_line_len,
                                 maxLineGap=max_line_gap)
         line_img = np.zeros((img.shape[0], img.shape[1], 3), dtype=np.uint8)
+        test = np.copy(line_img)
+        # for line in lines:
+        #     for x1, y1, x2, y2 in line:
+        #         cv2.line(test, (x1, y1), (x2, y2), [0, 255, 0], 2)
+        if flag:
+            plt.imshow(test)
+            plt.show()
         leftHistory, rightHistory = LaneFindingAlgorithm.draw_lines(line_img, lines, leftHistory, rightHistory,
                                                                     minAngleLeftLanes, minAngleRightLanes,
                                                                     maxAngleLeftLanes, maxAngleRightLanes, flag)
@@ -301,7 +308,7 @@ class LaneFindingAlgorithm:
         #     cv2.imshow('blur', blur_gray)
         #     cv2.waitKey(0)
         #     cv2.destroyAllWindows()
-        edges = LaneFindingAlgorithm.abs_sobel_thresh(blur_gray, low_threshold, high_threshold)
+        edges = LaneFindingAlgorithm.gradience_change(blur_gray, low_threshold, high_threshold)
 
         if flag:
             # plt.plot(x, y, '--', lw=2)

@@ -1,0 +1,38 @@
+Weather Condition: SNOW
+Number of images: 100
+Resolution: 450x255
+
+Vikas' Code HAAR-Spiker:
+------------------------
+Parameters:
+
+    ROI_START_ROW = 150
+    ROI_END_ROW = 225
+    ROI_START_COL = 70
+    ROI_END_COL = 340
+
+
+Total time for 100 images is 1.780199
+Frame rate: 56.1734952104
+
+Both Lanes correctly detected: 3 images  = 3%
+Atleast One Lane correctly detected: 55 images   = 55%
+
+
+
+Ashwani's Code Lane Detection:
+------------------------------
+
+    minAngleLeftLanes=20
+    minAngleRightLanes=-65
+    maxAngleLeftLanes=65
+    maxAngleRightLanes=-27
+
+
+Total time for 100 images is 2.062282 seconds
+Frame rate: 48.4899737281 images per second
+
+Both Lanes correctly detected: 98 images  = 98%
+Atleast One Lane correctly detected: 100 images = 100%
+
+

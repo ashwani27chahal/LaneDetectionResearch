@@ -1,0 +1,9 @@
+find /home/ashwani/Desktop/ResizedSunnyInput/ -type f -name "*.jpg" -print0 | xargs -0 shuf -e -n 20 -z | xargs -0 cp -vt /home/ashwani/Desktop/testingInput1/
+
+    shuf shuffles the list of *.jpg files in the current directory.
+    -z is to zero-terminate each line, so that files with special characters are treated correctly.
+    -n8 exits shuf after 8 files.
+    xargs -0 reads the input delimited by a null character (from shuf -z) and runs cp.
+    -v is to print every copy verbosely.
+    -t is to specify the target directory.
+

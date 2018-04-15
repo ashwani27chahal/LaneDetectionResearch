@@ -108,7 +108,7 @@ def processing(inputpath, outputpath, debug):
 
 # Execution starts here
 if __name__ == '__main__':
-    input_directory = "/home/ashwani/Desktop/testingInput/"
-    output_directory = "/home/ashwani/Desktop/testingOutputAshwaniCode/"
+    input_directory = "/home/ashwani/Desktop/testingInput3/"
+    output_directory = "/home/ashwani/Desktop/testingOutputAshwaniCode3/"
     debug = False
     processing(input_directory, output_directory, debug)

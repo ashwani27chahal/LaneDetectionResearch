@@ -1,22 +1,46 @@
-Weather Condition: SNOW
-Number of images: 100
+Weather Condition: SNOW/SUNNY/RAINY
+Number of images: 120 (Random 3 Input Sets)
 Resolution: 450x255
+
+
 
 Vikas' Code HAAR-Spiker:
 ------------------------
 Parameters:
 
-    ROI_START_ROW = 150
+    ROI_START_ROW = 120
     ROI_END_ROW = 225
-    ROI_START_COL = 70
-    ROI_END_COL = 340
+    ROI_START_COL = 30
+    ROI_END_COL = 380
 
 
-Total time for 100 images is 1.780199
-Frame rate: 56.1734952104
 
-Both Lanes correctly detected: 3 images  = 3%
-Atleast One Lane correctly detected: 55 images   = 55%
+INPUT SET 1:
+
+Total time for 120 images is 4.265075
+Frame rate: 28.1354958588
+
+Both Lanes correctly detected: 58 images = 48%
+Atleast One Lane correctly detected: 102 images = 85%
+
+
+INPUT SET 2:
+
+Total time for 120 images is 4.140362
+Frame rate: 28.9829729864
+
+Both Lanes correctly detected: 59 images = 49.16%
+Atleast One Lane correctly detected: 100 images = 83.33%
+
+
+INPUT SET 3:
+
+Total time for 120 images is 4.117949
+Frame rate: 29.1407202955
+
+Both Lanes correctly detected: 63 images = 52.5%
+Atleast One Lane correctly detected: 102 images = 85%
+
 
 
 
@@ -29,10 +53,49 @@ Ashwani's Code Lane Detection:
     maxAngleRightLanes=-27
 
 
-Total time for 100 images is 2.062282 seconds
-Frame rate: 48.4899737281 images per second
+INPUT SET 1:
 
-Both Lanes correctly detected: 98 images  = 98%
-Atleast One Lane correctly detected: 100 images = 100%
+Total time for 120 images is 2.849971 seconds
+Frame rate: 42.1056916018 images per second
 
+Both Lanes correctly detected: 114 images = 95%
+Atleast One Lane correctly detected: 120 images = 100%
+
+
+INPUT SET 2:
+
+Total time for 120 images is 2.412426 seconds
+Frame rate: 49.7424584215 images per second
+
+Both Lanes correctly detected: 116 images = 96.67%
+Atleast One Lane correctly detected: 120 images = 100%
+
+
+INPUT SET 3:
+
+Total time for 120 images is 2.395698 seconds
+Frame rate: 50.0897859413 images per second
+
+Both Lanes correctly detected: 114 images = 95%
+Atleast One Lane correctly detected: 120 images = 100%
+
+
+---------------------------------------------------
+
+CONCLUSION:
+===========
+
+Accuracy
+--------
+Previous work  -
+Both lanes - 49.92%    Atleast One Lane - 84.43%
+
+Current Work -
+Both lanes - 95.67%    Atleast One Lane - 100%
+
+Performance
+-----------
+
+Previous - 4.5 frames per second on PI
+Current - 7 frames per second on PI  - 55% faster
 
